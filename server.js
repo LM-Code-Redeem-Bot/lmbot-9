@@ -20,7 +20,7 @@ app.get("/:id/:code", async (request, response) => {
 //     await page.waitForSelector('#btn_claim_1');
 //     await page.click('#btn_claim_1',{delay: 300})
     await page.$eval('#iggid', (el, value) => el.value = value,  request.params.id);
-    await page.$eval('#cdkey_1', (el, value) => el.value = value,  request.params.id);
+    await page.$eval('#cdkey_1', (el, value) => el.value = value,  request.params.code);
     await page.$eval('#btn_claim_1', elem => elem.click());
     const f = await page.$("#msg")
     const text = await (await f.getProperty('textContent')).jsonValue()
